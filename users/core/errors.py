@@ -19,6 +19,8 @@ class ErrorJSONType(type):
 
 class ErrorCode:
     UNEXPECTED_ERROR = (1040010000, 'unexpected error')
+    USER_DOSE_NOT_ACTIVE = (1040010001, 'user dose not active')
+    INVALID_CREDENTIALS = (1040010002, 'invalid credentials')
 
     class dict(metaclass=ErrorJSONType):
         pass
@@ -84,6 +86,13 @@ def not_found(reason, message=None):
                         status_code=status.HTTP_404_NOT_FOUND)
 
 
+def unauthorized(reason, message=None):
+    return JSONResponse(
+        dict(message=message or reason[1], error=True, number=reason[0]),
+        status_code=status.HTTP_401_UNAUTHORIZED
+    )
+
+
 class CustomException(Exception):
 
     def __init__(self, message):
@@ -101,6 +110,16 @@ class BadRequest(CustomException):
 
     def http_response(self):
         return bad_request(self.message)
+
+
+class Unauthorized(CustomException):
+
+    def __init__(self, error_code: tuple):
+        self.message = error_code
+        super().__init__(self.message)
+
+    def http_response(self):
+        return unauthorized(self.message)
 
 
 class InternalServerError(CustomException):

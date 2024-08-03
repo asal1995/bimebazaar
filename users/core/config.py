@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     db_url: str
     origin: str
     debug: bool
+    jwt_pri_key: str
+    jwt_pub_key: str
 
     class Config:
         env_file = ".env"

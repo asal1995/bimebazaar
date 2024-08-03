@@ -11,6 +11,7 @@ from starlette.middleware.cors import CORSMiddleware
 from fastapi import APIRouter
 from users.core.config import get_settings
 from users.core.errors import CustomValidationError
+from users.routers import route as user_route
 
 
 route = APIRouter()
@@ -32,7 +33,7 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     logger.warning(f'Debug mode is {settings_.debug}')
-
+    app.include_router(user_route)
     __version__ = "1.0.0"  # Application version
 
     return app
@@ -40,17 +41,6 @@ def create_app() -> FastAPI:
 
 app = create_app()
 
-
-@app.get("/status")
-def home():
-    db_connection = is_db_available()
-
-    return ok({"database": db_connection, "status": 'ok'})
-
-
-@app.on_event("startup")
-async def startup_event():
-    return home()
 
 
 @app.exception_handler(RequestValidationError)

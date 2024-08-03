@@ -13,3 +13,4 @@ asyncpg
 psycopg2
 python-jose
 environs
+passlib
