@@ -1,0 +1,15 @@
+fastapi
+pydantic
+pydantic-settings
+asyncpg
+redis
+loguru
+requests
+uvicorn
+sqlalchemy
+alembic
+psycopg2-binary
+asyncpg
+python-jose
+environs
+email-validator
