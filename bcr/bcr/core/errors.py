@@ -19,6 +19,9 @@ class ErrorJSONType(type):
 
 class ErrorCode:
     UNEXPECTED_ERROR = (3040010000, 'unexpected error')
+    CREATE_COMMENT_ERROR = (3040010001, 'create comment error')
+    BOOK_WAS_READ_BEFORE = (30400210002, ' you read this book before')
+    BOOKMARKED_ERROR = (30400210003, 'bookmark error')
 
     class dict(metaclass=ErrorJSONType):
         pass
