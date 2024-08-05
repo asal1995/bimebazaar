@@ -14,3 +14,4 @@ python-jose
 environs
 email-validator
 httpx
+python-dotenv
