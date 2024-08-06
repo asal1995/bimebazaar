@@ -1,9 +1,8 @@
 from sqlalchemy import Column, Integer, String, UniqueConstraint, Enum
 from sqlalchemy.ext.declarative import declarative_base
 
+from bcr.db.database import Base
 from bcr.db.enums import RatingEnum
-
-Base = declarative_base()
 
 
 class CommentRating(Base):

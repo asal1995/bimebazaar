@@ -11,6 +11,7 @@ from starlette.middleware.cors import CORSMiddleware
 from fastapi import APIRouter
 from bcr.core.config import get_settings
 from bcr.core.errors import CustomValidationError
+from bcr.routers import route as bcr_route
 
 route = APIRouter()
 
@@ -31,7 +32,7 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     logger.warning(f'Debug mode is {settings_.debug}')
-    # app.include_router(user_route)
+    app.include_router(bcr_route)
     __version__ = "1.0.0"  # Application version
 
     return app

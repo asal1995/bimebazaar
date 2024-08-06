@@ -1,7 +1,7 @@
 from loguru import logger
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from books.core.config import get_settings
+from bcr.core.config import get_settings
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 
 settings = get_settings()
