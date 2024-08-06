@@ -15,3 +15,4 @@ environs
 email-validator
 httpx
 python-dotenv
+aiohttp
