@@ -16,7 +16,7 @@ async def get_comment_rate(db: AsyncSession, user_id: int, book_id: int):
 
 
 async def create_comment_rate(db: AsyncSession, body: dict):
-    db_comment = CommentRating(body)
+    db_comment = CommentRating(**body)
     db.add(db_comment)
     await db.commit()
     await db.refresh(db_comment)

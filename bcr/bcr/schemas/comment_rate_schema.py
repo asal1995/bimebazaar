@@ -13,7 +13,7 @@ class MyModel(BaseModel):
 class CommentRateCreate(MyModel):
     book_id: int
     comment: Union[str, None]
-    rate: Union[str, None]
+    rating: Union[str, None]
 
 
 class CommentRatingSchema(MyModel):
