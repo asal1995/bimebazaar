@@ -1,0 +1,11 @@
+DB_URL=postgresql://postgres:1111@localhost:5432/admin
+ASYNC_DB_URL=postgresql+asyncpg://postgres:1111@localhost:5432/admin
+ORIGIN =""
+DEBUG = True
+ACCESS_TOKEN_EXPIRE_MINUTES = 60  # The token expiration time can be adjusted
+JWT_PUB_KEY="-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEBc91jzHhIiUTRhjtF1IN3nzLPINV
+p8cb0NX+2cYcrDvZ+KgqFJk2ilryEhks5fdtlF6flDh/qOw+XZZV8IiYJA==
+-----END PUBLIC KEY-----"
+SERVICE_KEY = "wsetgedrgjwerjgtwovieigrvcqyhe"
+BOOK_URL=http://example

@@ -1,0 +1,20 @@
+DB_URL=postgresql://postgres:1111@localhost:5432/books
+ASYNC_DB_URL=postgresql+asyncpg://postgres:1111@localhost:5432/books
+ORIGIN =""
+JWT_PRI_KEY = "-----BEGIN EC PRIVATE KEY-----
+MHcCAQEEIE9qqxOVJN+ThuT7vkAi2fUqtq4C3Nf6uSDd58pnESqsoAoGCCqGSM49
+AwEHoUQDQgAEBc91jzHhIiUTRhjtF1IN3nzLPINVp8cb0NX+2cYcrDvZ+KgqFJk2
+ilryEhks5fdtlF6flDh/qOw+XZZV8IiYJA==
+-----END EC PRIVATE KEY-----"
+ALGORITHM = "HS256"
+DEBUG = True
+ACCESS_TOKEN_EXPIRE_MINUTES = 60  # The token expiration time can be adjusted
+
+JWT_PUB_KEY="-----BEGIN PUBLIC KEY-----
+MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEBc91jzHhIiUTRhjtF1IN3nzLPINV
+p8cb0NX+2cYcrDvZ+KgqFJk2ilryEhks5fdtlF6flDh/qOw+XZZV8IiYJA==
+-----END PUBLIC KEY-----"
+SERVICE_KEY = "rgsrtghjSrghjhwsedfochgfdniyerfrbncvwrkhk"
+BCR_URL= http://127.0.0.1:8005
+DETAIL_URL=http://127.0.0.1:8001/books/detail
+REDIS_URL="redis://localhost:6379"
