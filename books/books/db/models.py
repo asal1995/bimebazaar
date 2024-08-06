@@ -11,3 +11,5 @@ class Book(Base):
     description = Column(String)
     ave_rate = Column(Float)
     comment_count = Column(Integer, default=0)
+
+

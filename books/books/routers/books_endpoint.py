@@ -1,15 +1,18 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from books.core.errors import CustomException, ok
+from books.core.config import Settings, get_settings
 from ..core.security import verify_key
-from ..db.database import get_async_db
+from redis.asyncio import Redis
+from ..db.database import get_async_db, get_redis
 from ..schemas.books_schema import Book, BookCreate
-from ..services.books_service import create_book_service, update_book_service, delete_book_service
+from ..services.books_service import create_book_service, update_book_service, delete_book_service, \
+    detail_books_service, list_books_service
 
 route = APIRouter()
 
 
-@route.post("/", dependencies=[Depends(verify_key)], response_model=Book)
+@route.post("/", dependencies=[Depends(verify_key)])
 async def create_book_endpoint(book: BookCreate, db: AsyncSession = Depends(get_async_db)):
     try:
         new_book = await create_book_service(book=book, db=db)
@@ -34,3 +37,20 @@ async def delete_book_endpoint(book_id: int, db: AsyncSession = Depends(get_asyn
         return ok()
     except CustomException as e:
         return e.http_response()
+
+
+@route.get("/detail/{book_id}/")
+async def get_detail_book_endpoint(book_id: int,
+                                   db: AsyncSession = Depends(get_async_db),
+                                   env: Settings = Depends(get_settings)):
+    response = await detail_books_service(book_id=book_id, db=db, env=env)
+    return response
+
+
+@route.get("/list/")
+async def get_list_book_endpoint(db: AsyncSession = Depends(get_async_db),
+                                 env: Settings = Depends(get_settings),
+                                 redis: Redis = Depends(get_redis)
+                                 ):
+    result = await list_books_service(db=db, env=env, redis=redis)
+    return result

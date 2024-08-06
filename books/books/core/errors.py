@@ -19,10 +19,11 @@ class ErrorJSONType(type):
 
 class ErrorCode:
     UNEXPECTED_ERROR = (2040010000, 'unexpected error')
-    CREATE_BOOK_ERROR = (2040010000, 'create book error')
-    BOOK_NOT_FOUND = (2040010000, 'book not found')
-    UPDATE_BOOK_ERROR = (2040010000, 'update book error')
-    DELETE_BOOK_ERROR = (2040010000, 'delete book error')
+    CREATE_BOOK_ERROR = (2040010001, 'create book error')
+    BOOK_NOT_FOUND = (2040010002, 'book not found')
+    UPDATE_BOOK_ERROR = (2040010003, 'update book error')
+    DELETE_BOOK_ERROR = (2040010004, 'delete book error')
+    BCR_PROVIDER_ERROR = (2040010005, 'bcr provider error')
 
     class dict(metaclass=ErrorJSONType):
         pass

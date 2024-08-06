@@ -3,6 +3,13 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from books.core.config import get_settings
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
+import redis.asyncio as redis
+
+
+async def get_redis() -> redis.Redis:
+    redis_client = redis.from_url("redis://localhost:6379", encoding="utf-8", decode_responses=True)
+    return redis_client
+
 
 settings = get_settings()
 
@@ -25,3 +32,8 @@ async def get_async_db():
             yield session
         finally:
             await session.close()
+
+
+async def get_redis() -> redis.Redis:
+    red_cli = await redis.from_url(url=settings.redis_url, encoding="utf-8", decode_responses=True)
+    return red_cli

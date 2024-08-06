@@ -10,6 +10,12 @@ async def get_book(db: AsyncSession, book_id: int):
     return result.scalar_one_or_none()
 
 
+async def get_books_list(db: AsyncSession):
+    result = await db.execute(select(Book.id, Book.title))
+    books = result.all()
+    return books
+
+
 async def create_book(db: AsyncSession, book: BookCreate):
     db_book = Book(**book.dict())
     db.add(db_book)

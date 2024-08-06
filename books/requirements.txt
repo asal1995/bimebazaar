@@ -13,3 +13,4 @@ asyncpg
 python-jose
 environs
 email-validator
+aiohttp

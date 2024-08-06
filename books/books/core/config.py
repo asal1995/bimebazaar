@@ -14,6 +14,9 @@ class Settings(BaseSettings):
     debug: bool
     jwt_pub_key: str
     service_key: str
+    bcr_url: str
+    detail_url: str
+    redis_url: str
 
     class Config:
         env_file = ".env"
