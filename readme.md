@@ -5,7 +5,7 @@ This project uses Docker Compose to orchestrate multiple services including BCR,
 
 ## Services
 
-- **BCR Service:** Manages business-critical resources.
+- **BCR Service:** Manages bookmark-comments-rate services.
 - **User Service:** Handles user-related operations.
 - **Book Service:** Manages book inventory and related operations.
 - **Admin Service:** Provides administrative capabilities.
